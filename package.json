@@ -1,0 +1,45 @@
+{
+  "name": "webidl-scraper",
+  "version": "0.0.1",
+  "description": "Scrape IDL definitions from Web standard specs",
+  "main": "index.js",
+  "bin": {
+    "webidl-scraper": "cli/index.js"
+  },
+  "scripts": {
+    "test": "mocha",
+    "prepublish": "eslint . && mocha"
+  },
+  "preferGlobal": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/motiz88/webidl-scraper.git"
+  },
+  "keywords": [
+    "webidl"
+  ],
+  "author": {
+    "name": "Moti Zilberman",
+    "email": "motiz88@gmail.com"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/motiz88/webidl-scraper/issues"
+  },
+  "homepage": "https://github.com/motiz88/webidl-scraper",
+  "dependencies": {
+    "commander": "^2.8.1",
+    "glob": "^5.0.10",
+    "htmlparser2": "^3.8.2",
+    "request": "^2.56.0",
+    "rx": "^2.5.2"
+  },
+  "devDependencies": {
+    "chai": "^2.3.0",
+    "find-port": "^1.0.1",
+    "mocha": "^2.2.5",
+    "node-static": "^0.7.6",
+    "rx-node": "^1.0.0",
+    "temp": "^0.8.1"
+  }
+}

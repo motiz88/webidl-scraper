@@ -1,0 +1,8 @@
+---
+  env: 
+    node: true
+  rules: 
+    quotes: 0
+    comma-dangle: 0
+    eol-last: 0
+    curly: 0
