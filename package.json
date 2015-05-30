@@ -1,6 +1,6 @@
 {
   "name": "webidl-scraper",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Scrape IDL definitions from Web standard specs",
   "main": "index.js",
   "bin": {
