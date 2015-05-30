@@ -50,14 +50,14 @@ npm test
 ```
 ```
 
-> webidl-scraper@0.0.1 test C:\Users\Moti Z\Documents\GitHub\webidl-scraper
+> webidl-scraper@0.0.2 test C:\Users\Moti Z\Documents\GitHub\webidl-scraper
 > mocha
   Scraper CLI
     fixtures/html/*.html
       cssom.html
-        √ should match cssom.idl (101ms)
+        √ should match cssom.idl
       html5.html
-        √ should match html5.idl (1016ms)
+        √ should match html5.idl (583ms)
       noidl.html
         √ should match noidl.idl
     with input type
@@ -76,10 +76,10 @@ npm test
       cssom.html
         √ should match cssom.idl
       html5.html
-        √ should match html5.idl (819ms)
+        √ should match html5.idl (546ms)
       noidl.html
         √ should match noidl.idl
-  11 passing (2s)
+  11 passing (1s)
 
 ```
 
