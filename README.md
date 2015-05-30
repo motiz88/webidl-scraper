@@ -7,9 +7,40 @@ Scrape IDL definitions from Web standard specs
 Download node at [nodejs.org](http://nodejs.org) and install it, if you haven't already.
 
 ```sh
-npm install webidl-scraper --global
+npm install -g webidl-scraper
 ```
 
+## Usage
+
+```
+  webidl-scraper [options] <inputs: file | URL | "-" ...> (use - for stdin)
+
+  Options:
+
+    -h, --help                output usage information
+    -V, --version             output the version number
+    -o, --output-file <file>  output the scraped IDL to <file> (use - for stdout, the default)
+```
+
+## Examples
+Scrape a Web page for IDL fragments:
+```sh
+webidl-scraper https://html.spec.whatwg.org/
+# Output to stdout
+
+webidl-scraper http://dev.w3.org/csswg/cssom/ -o cssom.idl
+# Save to cssom.idl
+
+curl -sL http://dev.w3.org/csswg/cssom/ | webidl-scraper - > cssom.idl 
+# Use curl for HTTP and redirect stdout to cssom.idl
+```
+Scrape an HTML file for IDL fragments:
+```
+webidl-scraper html5-spec.html -o html5-spec.idl
+```
+## Scraping algorithm
+1. Get the contents of `<pre class="idl" />`, tags, excluding `class="idl extract"` ([reference](http://stackoverflow.com/a/7644380)).
+2. If the document as an _IDL Index_ section ([example](http://dev.w3.org/csswg/cssom/#idl-index)) - marked by an element with `id="idl-index"` - ignore IDL fragments that follow, on the assumption that they will contain no new IDL.
 
 ## Tests
 
