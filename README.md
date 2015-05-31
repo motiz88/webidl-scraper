@@ -42,7 +42,7 @@ webidl-scraper html5-spec.html -o html5-spec.idl
 These steps are derived experimentally and may change. I have tried to include links to sources and/or motivating examples for all the rules.
 
 1. Get the contents of `<pre class="idl" />`, tags, excluding `class="idl extract"` ([reference #1](http://stackoverflow.com/a/7644380), [#2](https://github.com/tabatkins/bikeshed/blob/master/docs/idl.md#idl-processing)).
-2. If the document as an _IDL Index_ section ([example](http://dev.w3.org/csswg/cssom/#idl-index)) - marked by an element with `id="idl-index"` - ignore IDL fragments that follow, on the assumption that they will contain no new IDL.
+2. If the document has an _IDL Index_ section ([example](http://dev.w3.org/csswg/cssom/#idl-index)) - marked by an element with `id="idl-index"` - ignore IDL fragments that follow, on the assumption that they will contain no new IDL.
 3. Also ignore tags that have the `data-no-idl` attribute (following [Bikeshed](https://github.com/tabatkins/bikeshed/blob/master/docs/idl.md#turning-off-processing)).
 
 ## Tests
