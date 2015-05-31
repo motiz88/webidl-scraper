@@ -92,7 +92,7 @@ npm test
 - [commander](https://github.com/tj/commander.js): the complete solution for node.js command-line programs
 - [glob](https://github.com/isaacs/node-glob): a little globber
 - [htmlparser2](https://github.com/fb55/htmlparser2): Fast &amp; forgiving HTML/XML/RSS parser
-- [request](https://github.com/git+https:/): Simplified HTTP request client.
+- [request](https://github.com/request/request): Simplified HTTP request client.
 - [rx](https://github.com/Reactive-Extensions/RxJS): Library for composing asynchronous and event-based operations in JavaScript
 
 ## Dev Dependencies
