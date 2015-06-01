@@ -34,6 +34,9 @@ module.exports = function scraperCli(options) {
         .usage('[options] <inputs: file | URL | "-" ...> (use - for stdin)')
         .arguments('<inputs...>')
         .option('-o, --output-file <file>', 'output the scraped IDL to <file> (use - for stdout, the default)', '-')
+        .option('--with-class-extract', 'do not ignore <pre class="idl extract" />')
+        .option('--with-data-no-idl', 'do not ignore <pre data-no-idl />')
+        .option('--with-idl-index', 'do not ignore IDL after id="idl-index"')
         .action(function(inputArgs) {
             inputs = inputArgs;
         })
@@ -52,6 +55,12 @@ module.exports = function scraperCli(options) {
         options.stdout :
         fs.createWriteStream(program.outputFile);
 
+    var scrapeOptions = {
+        withDataNoIdl: !program.withDataIdl /* commander.js quirk */,
+        withIdlIndex: program.withIdlIndex,
+        withClassExtract: program.withClassExtract
+    };
+
     Rx.Observable.from(inputs)
         .concatMap(function(input) {
             if (input === '-')
@@ -69,7 +78,7 @@ module.exports = function scraperCli(options) {
         })
         .concatMap(function(pipeable) {
             return Rx.Observable.create(function(observer) {
-                var scraper = new IdlScraper(function(err, scrapedBlock) {
+                var scraper = new IdlScraper(scrapeOptions, function(err, scrapedBlock) {
                     if (err)
                         observer.onError(err);
                     else

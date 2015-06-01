@@ -15,11 +15,17 @@ npm install -g webidl-scraper
 ```
   webidl-scraper [options] <inputs: file | URL | "-" ...> (use - for stdin)
 
+  Scrape IDL definitions from Web standard specs.
+
   Options:
 
     -h, --help                output usage information
     -V, --version             output the version number
     -o, --output-file <file>  output the scraped IDL to <file> (use - for stdout, the default)
+    --with-class-extract      do not ignore <pre class="idl extract" />
+    --with-data-no-idl        do not ignore <pre data-no-idl />
+    --with-idl-index          do not ignore IDL after id="idl-index"
+
 ```
 
 ## Examples
@@ -52,15 +58,20 @@ npm install
 npm test
 ```
 ```
-
   Scraper CLI
     fixtures/html/*.html
+      cssom-with-class-extract.html [--with-class-extract]
+        √ should match cssom-with-class-extract.idl (111ms)
+      cssom-with-idl-index.html [--with-idl-index]
+        √ should match cssom-with-idl-index.idl
       cssom.html
         √ should match cssom.idl
+      dom-with-data-no-idl.html [--with-data-no-idl]
+        √ should match dom-with-data-no-idl.idl
       dom.html
         √ should match dom.idl
       html5.html
-        √ should match html5.idl (570ms)
+        √ should match html5.idl (553ms)
       noidl.html
         √ should match noidl.idl
     with input type
@@ -76,15 +87,21 @@ npm test
       √ should create the file
   scraper-core
     fixtures/html/*.html
+      cssom-with-class-extract.html + options/cssom-with-class-extract.json
+        √ should match cssom-with-class-extract.idl
+      cssom-with-idl-index.html + options/cssom-with-idl-index.json
+        √ should match cssom-with-idl-index.idl
       cssom.html
         √ should match cssom.idl
+      dom-with-data-no-idl.html + options/dom-with-data-no-idl.json
+        √ should match dom-with-data-no-idl.idl
       dom.html
         √ should match dom.idl
       html5.html
-        √ should match html5.idl (587ms)
+        √ should match html5.idl (566ms)
       noidl.html
         √ should match noidl.idl
-  13 passing (2s)
+  19 passing (2s)
 ```
 
 ## Dependencies

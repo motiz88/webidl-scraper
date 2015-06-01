@@ -24,10 +24,17 @@ rxGlob(path.join(__dirname, 'fixtures/html/*.html'))
                         path.resolve(path.dirname(htmlFile), '../idl'),
                         path.basename(htmlFile, path.extname(htmlFile)) + '.idl'
                     );
-                    describe(path.basename(htmlFile), function() {
+                    var optionsFile = path.join(
+                        path.resolve(path.dirname(htmlFile), '../options'),
+                        path.basename(htmlFile, path.extname(htmlFile)) + '.json'
+                    );
+                    var scrapeOptions = null;
+                    if (fs.existsSync(optionsFile))
+                        scrapeOptions = JSON.parse(fs.readFileSync(optionsFile))['cli'];
+                    describe(path.basename(htmlFile) + (scrapeOptions ? (' [' + scrapeOptions.join(', ') + ']') : ''), function() {
                         var scraped;
                         beforeEach(function() {
-                            scraped = scrapeWithArgv([htmlFile, '-o', '-'])
+                            scraped = scrapeWithArgv([htmlFile, '-o', '-'].concat(scrapeOptions || []))
                                 .toArray()
                                 .map(function(arr) {
                                     return arr.join("");

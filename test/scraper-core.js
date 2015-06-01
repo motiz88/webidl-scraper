@@ -19,12 +19,19 @@ rxGlob(path.join(__dirname, 'fixtures/html/*.html'))
                         path.resolve(path.dirname(htmlFile), '../idl'),
                         path.basename(htmlFile, path.extname(htmlFile)) + '.idl'
                     );
-                    describe(path.basename(htmlFile), function() {
+                    var optionsFile = path.join(
+                        path.resolve(path.dirname(htmlFile), '../options'),
+                        path.basename(htmlFile, path.extname(htmlFile)) + '.json'
+                    );
+                    var scrapeOptions = null;
+                    if (fs.existsSync(optionsFile))
+                        scrapeOptions = JSON.parse(fs.readFileSync(optionsFile))['scraper-core'];
+                    describe(path.basename(htmlFile) + (scrapeOptions ? (' + options/' + path.basename(optionsFile)) : ''), function() {
                         var scraped;
                         beforeEach(function() {
                             scraped = scrapeStream(fs.createReadStream(htmlFile, {
                                 encoding: 'utf8'
-                            }))
+                            }), scrapeOptions)
                                 .toArray()
                                 .map(function(arr) {
                                     return arr.join("");
@@ -59,9 +66,9 @@ rxGlob(path.join(__dirname, 'fixtures/html/*.html'))
     }, run);
 
 
-function scrapeStream(pipeable) {
+function scrapeStream(pipeable, scrapeOptions) {
     return Rx.Observable.create(function(observer) {
-        var scraper = new IdlScraper(function(err, scrapedBlock) {
+        var scraper = new IdlScraper(scrapeOptions, function(err, scrapedBlock) {
             if (err)
                 observer.onError(err);
             else

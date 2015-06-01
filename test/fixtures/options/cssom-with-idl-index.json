@@ -1,0 +1,4 @@
+{
+	"scraper-core": {"withIdlIndex": true},
+	"cli": ["--with-idl-index"]
+}
