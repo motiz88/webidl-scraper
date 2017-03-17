@@ -1,4 +1,4 @@
-# webidl-scraper [![Build Status](https://travis-ci.org/motiz88/webidl-scraper.png?branch=master)](https://travis-ci.org/motiz88/webidl-scraper)
+# webidl-scraper [![Build Status](https://travis-ci.org/motiz88/webidl-scraper.svg?branch=master)](https://travis-ci.org/motiz88/webidl-scraper)
 
 Scrape IDL definitions from Web standard specs
 
