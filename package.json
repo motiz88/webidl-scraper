@@ -29,15 +29,15 @@
   "homepage": "https://github.com/motiz88/webidl-scraper",
   "dependencies": {
     "commander": "^2.8.1",
-    "glob": "^5.0.10",
+    "glob": "^7.1.1",
     "htmlparser2": "^3.8.2",
     "request": "^2.56.0",
-    "rx": "^2.5.2"
+    "rx": "^4.1.0"
   },
   "devDependencies": {
-    "chai": "^2.3.0",
-    "find-port": "^1.0.1",
-    "mocha": "^2.2.5",
+    "chai": "^3.5.0",
+    "find-port": "^2.0.1",
+    "mocha": "^3.2.0",
     "node-static": "^0.7.6",
     "rx-node": "^1.0.0",
     "temp": "^0.8.1"
