@@ -1,5 +1,7 @@
 # webidl-scraper [![Build Status](https://travis-ci.org/motiz88/webidl-scraper.png?branch=master)](https://travis-ci.org/motiz88/webidl-scraper)
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/motiz88/webidl-scraper.svg)](https://greenkeeper.io/)
+
 Scrape IDL definitions from Web standard specs
 
 ## Installation
